@@ -1,0 +1,136 @@
+<div class="main">
+  <div class="header">
+    <h1> USER DIRECTORY</h1>
+    <button class="btn btn-primary" (click)="modalClick()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New User</button>
+  </div>
+  <div class="content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>USER NAME</th>
+        <th>ADDRESS</th>
+        <th>CONTACT</th>
+        <th>EMAIL</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let user of users">
+        <td><div class="user-image" style="display:inline-block"> <i class=" profile fas fa-user-circle" style="font-size:25px;color: rgb(192, 191, 191)"></i>  &nbsp;&nbsp; {{user.username}}</div> </td>
+        <td>{{user.address}}</td>
+        <td>{{user.contact}}</td>
+        <td>{{user.email}}</td>
+        <td><div class="dropdown">
+          <button type="button" class="dropdown-button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click)="editClick(user)"><i class="fas fa-edit" aria-hidden="true"></i> Edit User</a>
+            <a class="dropdown-item"  (click)="onDelete(user._id)"><i class="fa fa-trash" style="color: red" aria-hidden="true"></i> Delete User</a>
+          </div>
+        </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="add-user" *ngIf="showNewUserModal">
+  <div class="add-user-card">
+    <div class="card-heading">
+      <h4> Add new User</h4>
+      <p (click)="modalClick()" style="cursor:pointer">&times;</p>
+    </div>
+    <div class="main">
+      <div class="row">
+        <div class="image col-md-4">
+          <div class="square">
+            <div class="circle">
+             <i class=" profile fas fa-user-circle"></i> 
+          </div>
+          <button class="button">Upload</button>
+          </div>
+          
+        </div>
+            
+       
+        <div class="form col-md-8">
+           <label>User Name</label> <input type ="text" class="form-control"  placeholder="enter full name"  [(ngModel)]="newUser.username">
+           <label>Address</label><input type ="text" class="form-control" placeholder="enter address" [(ngModel)]="newUser.address">
+          </div>
+        </div>
+         <div class="row">
+             <div class="form-con col-md-6">
+             <label>Contact</label> <input type ="text"class="form-control" placeholder=" enter contact" [(ngModel)]="newUser.contact" >
+             <div class="error" *ngIf="newInvalidContact">
+               Invalid Contact
+            </div>
+             </div>
+             <div class="form-email col-md-6">
+             <label>Email</label><input type ="text" class="form-control" placeholder=" enter email" required ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" [(ngModel)]="newUser.email">
+             <div class="error" *ngIf="newInvalidEmail">
+               Invalid Email
+             </div>
+             </div>
+        </div>
+      </div>
+      <button [disabled]="newUser.username==''||newUser.address==''||newUser.email==''||newUser.contact==''" class="btn btn-primary form-control"(click)="addUser()">Add New User</button>
+    </div> 
+  </div>
+
+
+  <div class="edit-user" *ngIf="showEditUserModal">
+    <div class="edit-user-card">
+      <div class="card-heading">
+        <h4> Edit User</h4>
+        <p (click)="editClick()"style="cursor:pointer;font-size:30px;">&times;</p>
+      </div>
+      <div class="main">
+        <div class="row">
+          <div class="image col-md-4">
+            <div class="square">
+              <div class="circle">
+               <i class=" profile fas fa-user-circle"></i> 
+            </div>
+            <button class="button">Update</button>
+            </div>
+            
+          </div>
+              
+         
+          <div class="form col-md-8">
+             <label>User Name</label> <input type ="text" class="form-control"  placeholder="enter full name"  [(ngModel)]="selectedUser.username">
+             <label>Address</label><input type ="text" class="form-control" placeholder="enter address" [(ngModel)]="selectedUser.address">
+            </div>
+          </div>
+           <div class="row">
+               <div class="form-con col-md-6">
+               <label>Contact</label> <input type ="text"class="form-control" placeholder=" enter contact" [(ngModel)]="selectedUser.contact" >
+               <div class="error" *ngIf="editInvalidContact">
+                Invalid Contact
+             </div>
+               </div>
+               <div class="form-email col-md-6">
+               <label>Email</label><input type ="text" class="form-control" placeholder=" enter email"  required ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"  [(ngModel)]="selectedUser.email">
+               <div class="error" *ngIf="editInvalidEmail">
+                Invalid Email
+              </div>
+               </div>
+          </div>
+        </div>
+        <button [disabled]="selectedUser.username==''&&selectedUser.address==''&&selectedUser.email==''&&selectedUser.contact==''" class="btn btn-primary form-control"(click)="onSaveChanges()">Save Changes</button>
+      </div> 
+    </div>
+
+<!-- <div class="edit-user" *ngIf="showEditUserModal">
+  <div class="edit-user-card">
+    
+    <button (click)="editClick()">X</button>
+    <input type ="text" placeholder="name"  [(ngModel)]="selectedUser.username">
+    <input type ="text" placeholder="address" [(ngModel)]="selectedUser.address">
+    <input type ="text" placeholder="contact" [(ngModel)]="selectedUser.contact" >
+    <input type ="text" placeholder="email"  [(ngModel)]="selectedUser.email">
+    <button class="btn btn-primary"(click)="onSaveChanges()">Save Changes</button>
+  </div>
+</div> -->

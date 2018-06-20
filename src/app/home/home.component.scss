@@ -1,0 +1,190 @@
+.row{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    height:100%;
+    width:100%;
+   .header{
+    height: 110px;
+    width:100%;
+    background: white;
+    padding: 30px 150px;
+    border-bottom: 1px solid rgb(221, 220, 220);
+    h1{
+        font-weight:600;
+        font-size: 30px;
+        float: left;
+    }
+    button{
+        float:right;
+        padding: 5px 10px;
+        i{
+            margin-right: 10px;
+        }
+    }
+}
+    .content{
+          padding: 30px 150px;
+          table{
+              background: white;
+              thead{
+                  color: rgb(175, 175, 175);
+                  font-size: 12px;
+                  font-weight: 300;
+              }
+            
+              .dropdown-button{
+                  border: none;
+                  background: none;
+                  color:rgb(201, 193, 193);
+                  cursor: pointer;
+                  outline: none;
+                  &:hover{
+                      color: #333;
+                  }
+              }
+              .dropdown-menu{
+                  margin-right: 200px;
+                  .dropdown-item{
+                      cursor: pointer;
+                      &:hover{
+                          color: gray;
+                      }
+                      &:focus, &:active{
+                          background: none;
+                          outline: none;
+                      }
+                  }
+              }
+          }
+
+    }
+
+    
+}
+.add-user,.edit-user{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .add-user-card,.edit-user-card{
+        height: auto;
+        width: 570px;
+        background: white;
+        padding: 15px;
+        position: relative;
+        box-sizing: border-box;
+        .card-heading{
+            padding:25px;
+            margin-bottom: 20px;
+            h4{
+                font-weight: 600;
+                float: left;
+                font-size:18px;
+            }
+            p{
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+                color:rgb(182, 178, 178);
+                &:hover{
+                    color: #333;
+                }
+            }
+        }
+        .main{
+            margin: 15px;
+             padding-bottom:30px;
+            .row{
+                padding: 8px;
+               // left:0;
+                .image{
+                    float: left;
+                  .square{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                      height:140px;
+                      width:auto;
+                    border: 1px solid rgb(201, 195, 195);
+                    
+                    .circle{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 80px;
+                        width:80px;
+                        border-radius: 50%;
+                        border: 1px solid rgb(201, 195, 195);
+                        background: rgb(247, 245, 245);
+                        .profile{
+                           display: flex;
+                           flex-direction: column;
+                           justify-content: center;
+                           align-items: center;
+                            font-size:25px;
+                            color:rgb(199, 194, 194);
+            
+                        }
+
+                    }
+                    .button{
+                        border: none;
+                        padding: 2px 30px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin: 7px 0px 3px 3px;
+                        cursor: pointer; 
+                        background-color: white;
+                        color: black;
+                        border: 2px solid #e7e7e7;
+                }
+             }
+                .form{
+                    float: right;
+                    padding: 30px;
+                }
+                    
+                    .row{
+                     
+                        
+                        .form-con{
+                            
+                            float: left;
+                        }
+                        .form-email{
+                          
+                            float: right;
+                            margin-left: 100px; 
+                        }
+                    }
+                
+                .form ,.form-con ,.form-email{
+                    label{
+                        font-weight:500;
+                        font-size: 10px;
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+}
+
+.error{
+    color: red;
+}
